@@ -1,0 +1,57 @@
+#include <iostream>
+
+// Function to sort array in ascending order
+void sortAscending(int* arr, int size) {
+    for (int i = 0; i < size - 1; ++i) {
+        for (int j = 0; j < size - i - 1; ++j) {
+            if (*(arr + j) > *(arr + j + 1)) {
+                // Swap values using pointers
+                int temp = *(arr + j);
+                *(arr + j) = *(arr + j + 1);
+                *(arr + j + 1) = temp;
+            }
+        }
+    }
+}
+
+// Function to sort array in descending order
+void sortDescending(int* arr, int size) {
+    for (int i = 0; i < size - 1; ++i) {
+        for (int j = 0; j < size - i - 1; ++j) {
+            if (*(arr + j) < *(arr + j + 1)) {
+                // Swap values using pointers
+                int temp = *(arr + j);
+                *(arr + j) = *(arr + j + 1);
+                *(arr + j + 1) = temp;
+            }
+        }
+    }
+}
+
+// Function to print array
+void printArray(int* arr, int size) {
+    for (int i = 0; i < size; ++i) {
+        std::cout << *(arr + i) << " ";
+    }
+    std::cout << std::endl;
+}
+
+int main() {
+    int arr[] = {5, 2, 8, 12, 3};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    std::cout << "Original array: ";
+    printArray(arr, size);
+
+    // Sort array in ascending order
+    sortAscending(arr, size);
+    std::cout << "Array sorted in ascending order: ";
+    printArray(arr, size);
+
+    // Sort array in descending order
+    sortDescending(arr, size);
+    std::cout << "Array sorted in descending order: ";
+    printArray(arr, size);
+
+    return 0;
+}
